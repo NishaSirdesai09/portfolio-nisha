@@ -1,5 +1,4 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Card } from "@/components/ui/card";
 
 const Contact = () => {
   const contactInfo = [
@@ -25,43 +24,46 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 px-6 bg-muted/20">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent to-secondary">
             Contact
           </h2>
-          <div className="w-20 h-1 bg-gradient-accent mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-gradient-accent mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Feel free to reach out for opportunities, collaborations, or just to connect!
+            Let's connect and explore opportunities together
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {contactInfo.map((item, index) => (
-            <Card 
+            <div 
               key={index}
-              className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group animate-slide-in-left text-center"
+              className="group animate-slide-in-left"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex flex-col items-center">
-                <div className="p-4 rounded-full bg-gradient-primary mb-4">
-                  <item.icon className="h-6 w-6 text-primary-foreground" />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-8 text-center transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow">
+                  <div className="inline-flex p-4 rounded-full bg-gradient-primary mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                    {item.label}
+                  </h3>
+                  {item.link ? (
+                    <a 
+                      href={item.link}
+                      className="text-base font-medium text-foreground hover:text-primary transition-colors block"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-base font-medium text-foreground">{item.value}</p>
+                  )}
                 </div>
-                <h3 className="font-semibold mb-2 text-sm text-muted-foreground">
-                  {item.label}
-                </h3>
-                {item.link ? (
-                  <a 
-                    href={item.link}
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    {item.value}
-                  </a>
-                ) : (
-                  <p className="text-foreground">{item.value}</p>
-                )}
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
