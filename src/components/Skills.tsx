@@ -59,14 +59,8 @@ const Skills = () => {
                 {category.skills.map((skill, idx) => (
                   <Badge 
                     key={idx}
-                    variant="outline"
-                    className={`
-                      border-${category.color}/50 
-                      hover:border-${category.color} 
-                      hover:bg-${category.color}/10
-                      transition-all duration-300
-                      cursor-default
-                    `}
+                    variant="secondary"
+                    className="hover:bg-primary/20 transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </Badge>
