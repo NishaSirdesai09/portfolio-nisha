@@ -42,8 +42,8 @@ const About = () => {
               Northeastern University with a strong foundation in full-stack development and cloud technologies.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Currently working as a <span className="text-secondary font-semibold">Software Engineer Co-op at LendBuzz</span>, 
-              where I build scalable APIs, develop AI-powered solutions, and optimize system performance.
+              Recently completed a <span className="text-secondary font-semibold">Software Engineer Co-op at LendBuzz</span>, 
+              where I built scalable APIs, developed AI-powered solutions, and optimized system performance.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               With over 2 years of professional experience, I've successfully delivered enterprise-level applications, 
