@@ -61,12 +61,18 @@ const Contact = () => {
 
             <div className="pt-4">
               <p className="text-sm text-muted-foreground mb-3">Or download my resume</p>
-              <Button 
+              <Button
                 variant="outline"
                 className="border-primary/50 hover:border-primary hover:bg-primary/10"
                 asChild
               >
-                <a href="#" className="flex items-center gap-2">
+                {/* Place your resume file at `public/resume.pdf` so this link downloads it */}
+                <a
+                  href="/NishaSirdesai_Resume_FT_Oct_fsd.pdf"
+                  download="Nisha_Sirdesai_Resume.pdf"
+                  className="flex items-center gap-2"
+                  aria-label="Download Resume"
+                >
                   Download Resume
                   <ArrowRight className="h-4 w-4" />
                 </a>
