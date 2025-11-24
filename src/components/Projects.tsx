@@ -1,7 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const projects = [
@@ -63,47 +61,54 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <div
               key={index}
-              className="p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow hover:-translate-y-2 group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="animate-slide-up"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-secondary text-sm font-semibold mb-4">
-                  {project.subtitle}
-                </p>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
+              <Card 
+                className="h-full p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 group relative overflow-hidden"
+              >
+                {/* Shimmer effect on hover */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
+                
+                <div className="relative z-10 mb-6">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-secondary text-sm font-semibold mb-4">
+                    {project.subtitle}
+                  </p>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
 
-              <div className="mb-6">
-                <p className="text-sm font-semibold mb-3 text-accent">Key Highlights:</p>
-                <ul className="space-y-2">
-                  {project.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="text-primary">✓</span>
-                      {highlight}
-                    </li>
+                <div className="relative z-10 mb-6">
+                  <p className="text-sm font-semibold mb-3 text-accent">Key Highlights:</p>
+                  <ul className="space-y-2">
+                    {project.highlights.map((highlight, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span className="text-primary">✓</span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="relative z-10 flex flex-wrap gap-2">
+                  {project.technologies.map((tech, idx) => (
+                    <Badge 
+                      key={idx}
+                      variant="outline"
+                      className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all"
+                    >
+                      {tech}
+                    </Badge>
                   ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.technologies.map((tech, idx) => (
-                  <Badge 
-                    key={idx}
-                    variant="outline"
-                    className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </Card>
+                </div>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

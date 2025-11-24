@@ -65,9 +65,9 @@ const Experience = () => {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-6 top-6 w-5 h-5 rounded-full bg-primary border-4 border-background hidden md:block"></div>
+                <div className="absolute left-6 top-6 w-5 h-5 rounded-full bg-primary border-4 border-background hidden md:block animate-pulse-slow"></div>
 
-                <Card className="md:ml-20 p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group">
+                <Card className="md:ml-20 p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-glow group hover:scale-[1.01]">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                     <div>
                       <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">

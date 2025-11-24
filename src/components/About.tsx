@@ -63,10 +63,14 @@ const About = () => {
 
           <div className="grid grid-cols-1 gap-4 animate-slide-in-right">
             {highlights.map((item, index) => (
-              <Card 
+              <div
                 key={index}
-                className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+                className="animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
+                <Card 
+                  className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-glow group hover:scale-[1.02]"
+                >
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-gradient-primary">
                     <item.icon className="h-6 w-6 text-primary-foreground" />
@@ -81,6 +85,7 @@ const About = () => {
                   </div>
                 </div>
               </Card>
+            </div>
             ))}
           </div>
         </div>
