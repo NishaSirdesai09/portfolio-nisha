@@ -96,19 +96,35 @@ const Education = () => {
         </div>
 
         {/* Certification */}
-        <div className="max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
+        <div className="max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-primary/30 rounded-2xl blur-xl" />
-            <div className="relative bg-gradient-to-r from-primary/10 to-secondary/10 backdrop-blur-sm border border-border/50 rounded-2xl p-8 text-center transition-all duration-300 group-hover:border-primary/50">
-              <div className="inline-flex p-4 rounded-full bg-gradient-primary mb-4">
-                <Award className="h-8 w-8 text-primary-foreground" />
+            <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity" />
+            <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-primary" />
+              <div className="p-10 md:p-12">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-xl opacity-50" />
+                    <div className="relative p-6 rounded-2xl bg-gradient-primary">
+                      <Award className="h-16 w-16 text-primary-foreground" />
+                    </div>
+                  </div>
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="inline-block px-4 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent text-xs font-semibold uppercase tracking-wider mb-4">
+                      Professional Certification
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
+                      Oracle Cloud Platform Certified
+                    </h3>
+                    <p className="text-xl text-muted-foreground mb-2">
+                      Application Integration 2021 Specialist
+                    </p>
+                    <p className="text-sm text-muted-foreground/80">
+                      Certified in designing and implementing integration solutions on Oracle Cloud Platform
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Oracle Cloud Platform Certified
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                Application Integration 2021 Specialist
-              </p>
             </div>
           </div>
         </div>
