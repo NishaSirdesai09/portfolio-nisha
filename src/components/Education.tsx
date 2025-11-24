@@ -17,10 +17,10 @@ const Education = () => {
     },
     {
       degree: "Bachelor of Engineering in Computer Science",
-      school: "B.M.S. College of Engineering",
-      location: "Bangalore, India",
+      school: "Basaveshwar Engineering College",
+      location: "Bagalkot, India",
       period: "Aug 2017 — Jul 2021",
-      gpa: "8.16/10.0",
+      gpa: "",
       coursework: [
         "Data Structures & Algorithms",
         "Database Management Systems",
@@ -67,10 +67,12 @@ const Education = () => {
                     <Calendar className="h-4 w-4" />
                     <span>{edu.period}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Award className="h-4 w-4 text-accent" />
-                    <span className="font-semibold text-accent">{edu.gpa}</span>
-                  </div>
+                  {edu.gpa && (
+                    <div className="flex items-center gap-2">
+                      <Award className="h-4 w-4 text-accent" />
+                      <span className="font-semibold text-accent">{edu.gpa}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div>
