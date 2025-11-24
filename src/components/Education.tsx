@@ -19,7 +19,7 @@ const Education = () => {
       degree: "Bachelor of Engineering in Computer Science",
       school: "Basaveshwar Engineering College",
       location: "Bagalkot, India",
-      period: "Aug 2017 — Jul 2021",
+      period: "Aug 2016 — May 2020",
       gpa: "",
       coursework: [
         "Data Structures & Algorithms",

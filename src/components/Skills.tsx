@@ -48,13 +48,13 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="relative group animate-fade-in"
+              className="relative group animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
-              <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow">
+              <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-6 h-full transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-glow hover:scale-[1.02]">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-gradient-primary">
+                  <div className="p-2 rounded-lg bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
                     <category.icon className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
@@ -63,12 +63,15 @@ const Skills = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, idx) => (
-                    <span 
+                    <div
                       key={idx}
-                      className="px-3 py-1 text-sm rounded-full bg-secondary/20 text-secondary-foreground border border-secondary/30 hover:bg-secondary/30 hover:border-secondary/50 transition-all duration-200 cursor-default"
+                      className="animate-scale-in"
+                      style={{ animationDelay: `${idx * 0.05}s` }}
                     >
-                      {skill}
-                    </span>
+                      <span className="inline-block px-3 py-1 text-sm rounded-full bg-secondary/20 text-secondary-foreground border border-secondary/30 hover:bg-secondary/30 hover:border-secondary/50 hover:scale-105 transition-all duration-200 cursor-default">
+                        {skill}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
