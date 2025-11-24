@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,6 +76,21 @@ const Navbar = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
+              
+              {/* Theme Toggle */}
+              {mounted && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="relative group"
+                >
+                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              )}
+              
               <Button
                 size="sm"
                 className="bg-gradient-primary hover:opacity-90 text-primary-foreground border-0"
@@ -119,10 +141,26 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
+          
+          {/* Mobile Theme Toggle */}
+          {mounted && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="border-primary/50 hover:border-primary hover:bg-primary/10 animate-fade-in"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="ml-2">{theme === "dark" ? "Light" : "Dark"} Mode</span>
+            </Button>
+          )}
+          
           <Button
             size="lg"
             className="bg-gradient-primary hover:opacity-90 text-primary-foreground border-0 animate-fade-in"
-            style={{ animationDelay: "0.6s" }}
+            style={{ animationDelay: "0.7s" }}
             asChild
           >
             <a
