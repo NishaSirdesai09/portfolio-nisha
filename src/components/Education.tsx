@@ -6,8 +6,8 @@ const Education = () => {
       degree: "Master of Science in Information Systems",
       school: "Northeastern University",
       location: "Boston, MA",
-      period: "Sep 2023 — May 2025",
-      gpa: "3.7/4.0",
+      period: "Sep 2023 — Dec 2025",
+      gpa: "3.8/4.0",
       coursework: [
         "Application Engineering & Development",
         "Data Science Engineering",

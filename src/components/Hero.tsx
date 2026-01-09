@@ -70,7 +70,7 @@ const Hero = () => {
               className="group border-primary/50 hover:border-primary hover:bg-primary/10"
               asChild
             >
-              <a href="https://github.com/nishasirdesai" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/NishaSirdesai09" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5 group-hover:text-primary transition-colors" />
                 GitHub
               </a>
