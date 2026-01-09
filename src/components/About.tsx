@@ -51,7 +51,7 @@ const About = () => {
             </p>
             <div className="flex gap-4 text-sm">
               <div>
-                <p className="text-accent font-semibold text-xl">3.7</p>
+                <p className="text-accent font-semibold text-xl">3.8</p>
                 <p className="text-muted-foreground">GPA</p>
               </div>
               <div className="border-l border-border pl-4">
