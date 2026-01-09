@@ -43,7 +43,7 @@ const Contact = () => {
                 </span>
               </h3>
               <p className="text-lg text-muted-foreground">
-                I'm currently seeking full-time Software Engineering opportunities starting May 2025.
+                I'm currently seeking full-time Software Engineering opportunities starting Dec 2025.
               </p>
             </div>
 
