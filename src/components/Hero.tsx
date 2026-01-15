@@ -1,24 +1,155 @@
-import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Github, Linkedin, Mail, ChevronDown, Lightbulb, Brain, Palette, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Full-Stack Software Engineer";
+  const typewriterTexts = ["FullStack Software", "AI", "Frontend"];
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const fixedText = "Engineer";
   
+  const animatedWords = [
+    { text: "Ideas", icon: Lightbulb },
+    { text: "Concepts", icon: Brain },
+    { text: "Designs", icon: Palette },
+    { text: "Code", icon: Code },
+  ];
+
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // 3D animated background
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     
-    return () => clearInterval(timer);
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    
+    // 3D Grid particles
+    const particles: Array<{
+      x: number;
+      y: number;
+      z: number;
+      vx: number;
+      vy: number;
+      vz: number;
+    }> = [];
+    
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width - canvas.width / 2,
+        y: Math.random() * canvas.height - canvas.height / 2,
+        z: Math.random() * 1000,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        vz: Math.random() * 2 + 1,
+      });
+    }
+    
+    const focalLength = 300;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    
+    let animationId: number;
+    
+    const animate = () => {
+      // Use dark background for dark mode, lighter for light mode
+      const isDark = document.documentElement.classList.contains('dark');
+      ctx.fillStyle = isDark ? "rgba(13, 13, 13, 0.05)" : "rgba(255, 218, 185, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach((p) => {
+        p.z -= p.vz;
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        if (p.z < 1) {
+          p.z = 1000;
+          p.x = Math.random() * canvas.width - canvas.width / 2;
+          p.y = Math.random() * canvas.height - canvas.height / 2;
+        }
+        
+        const scale = focalLength / p.z;
+        const screenX = p.x * scale + centerX;
+        const screenY = p.y * scale + centerY;
+        const size = Math.max(0.5, 3 * scale);
+        
+        // Color based on depth
+        const hue = 263 + (p.z / 1000) * 60;
+        const alpha = Math.min(1, (1000 - p.z) / 500);
+        
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${hue}, 70%, 60%, ${alpha})`;
+        ctx.fill();
+        
+        // Connect nearby particles
+        particles.forEach((p2) => {
+          const scale2 = focalLength / p2.z;
+          const screenX2 = p2.x * scale2 + centerX;
+          const screenY2 = p2.y * scale2 + centerY;
+          
+          const dist = Math.hypot(screenX - screenX2, screenY - screenY2);
+          if (dist < 80 && dist > 0) {
+            ctx.beginPath();
+            ctx.moveTo(screenX, screenY);
+            ctx.lineTo(screenX2, screenY2);
+            ctx.strokeStyle = `hsla(200, 70%, 50%, ${(1 - dist / 80) * 0.3 * alpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      });
+      
+      animationId = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, []);
+
+  useEffect(() => {
+    const currentText = typewriterTexts[currentTextIndex];
+    
+    if (charIndex < currentText.length) {
+      const timer = setTimeout(() => {
+        setDisplayText(currentText.slice(0, charIndex + 1));
+        setCharIndex(charIndex + 1);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      // Wait before starting next text
+      const timer = setTimeout(() => {
+        setDisplayText("");
+        setCharIndex(0);
+        setCurrentTextIndex((prev) => (prev + 1) % typewriterTexts.length);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [charIndex, currentTextIndex, typewriterTexts]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % animatedWords.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [animatedWords.length]);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -26,20 +157,28 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-hero animate-gradient-shift bg-200%" />
+      {/* 3D Canvas Background */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 bg-[#FFDAB9] dark:bg-[#0d0d0d]"
+      />
       
-      {/* Floating Particles */}
+      {/* Gradient Overlay - Peach in light mode, dark in dark mode */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFDAB9]/30 to-[#FFDAB9] dark:via-[#0d0d0d]/30 dark:to-[#0d0d0d]" />
+      
+      {/* Floating Orbs */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-primary/30 rounded-full animate-float"
+            className="absolute rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
+              width: `${80 + i * 40}px`,
+              height: `${80 + i * 40}px`,
+              left: `${10 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${6 + i * 2}s`,
             }}
           />
         ))}
@@ -52,15 +191,38 @@ const Hero = () => {
             NISHA SIRDESAI
           </h1>
           <div className="h-12 mb-8">
-            <p className="text-2xl md:text-3xl text-foreground/90 font-mono">
-              {displayText}
+            <p className="text-2xl md:text-3xl text-foreground/90 dark:text-white/90 font-mono">
+              {displayText} {fixedText}
               <span className="animate-glow">|</span>
             </p>
           </div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-            Building scalable applications with modern technologies, AI/ML integration, 
-            and cloud infrastructure. Passionate about creating exceptional user experiences.
-          </p>
+          <div className="text-xl md:text-2xl text-foreground dark:text-white max-w-3xl mx-auto mb-12">
+            <p className="text-center leading-relaxed">
+              Shaping
+              <span className="inline-block relative align-middle mx-1 min-w-[150px] h-[1.6em]">
+                {animatedWords.map((word, index) => {
+                  const Icon = word.icon;
+                  const isActive = index === currentWordIndex;
+                  return (
+                    <span
+                      key={word.text}
+                      className={`absolute inset-0 flex items-center justify-center gap-1.5 transition-all duration-500 ease-in-out ${
+                        isActive
+                          ? "opacity-100 translate-y-0"
+                          : index < currentWordIndex
+                          ? "opacity-0 -translate-y-full"
+                          : "opacity-0 translate-y-full"
+                      }`}
+                    >
+                      <Icon className="h-6 w-6 text-primary flex-shrink-0" />
+                      <span className="font-semibold whitespace-nowrap">{word.text}</span>
+                    </span>
+                  );
+                })}
+              </span>
+              into Real Projects that Deliver Results
+            </p>
+          </div>
           
           {/* Social Links */}
           <div className="flex gap-4 justify-center mb-12">
@@ -92,7 +254,7 @@ const Hero = () => {
               className="group border-accent/50 hover:border-accent hover:bg-accent/10"
               asChild
             >
-              <a href="mailto:nishasirdesai09@gmail.com">
+              <a href="mailto:nishasirdesai06@gmail.com">
                 <Mail className="mr-2 h-5 w-5 group-hover:text-accent transition-colors" />
                 Contact
               </a>
@@ -103,7 +265,7 @@ const Hero = () => {
         {/* Scroll Indicator */}
         <button
           onClick={() => scrollToSection("about")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20"
         >
           <ChevronDown className="h-8 w-8 text-primary" />
         </button>

@@ -12,26 +12,28 @@ const Education = () => {
         "Application Engineering & Development",
         "Data Science Engineering",
         "Web Design & User Experience",
-        "Network Structures & Cloud Computing"
+        "Data Structures & Algorithms"
       ]
     },
     {
-      degree: "Bachelor of Engineering in Computer Science",
+      degree: "Bachelor of Engineering in Computer Science & Engineering",
       school: "Basaveshwar Engineering College",
       location: "Bagalkot, India",
       period: "Aug 2016 — May 2020",
       gpa: "",
       coursework: [
-        "Data Structures & Algorithms",
+        "Operating Systems",
         "Database Management Systems",
         "Computer Networks",
-        "Software Engineering"
+        "Software Engineering",
+        "Object Oriented Programming",
+        "Machine Learning",
       ]
     }
   ];
 
   return (
-    <section id="education" className="py-24 px-6">
+    <section id="education" className="py-24 px-6 bg-[hsl(var(--sky-blue))] dark:bg-transparent">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
@@ -57,7 +59,7 @@ const Education = () => {
                     <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                       {edu.degree}
                     </h3>
-                    <p className="text-secondary font-semibold mb-1">{edu.school}</p>
+                    <p className="text-foreground/70 font-semibold mb-1">{edu.school}</p>
                     <p className="text-sm text-muted-foreground">{edu.location}</p>
                   </div>
                 </div>
@@ -83,7 +85,7 @@ const Education = () => {
                     {edu.coursework.map((course, idx) => (
                       <span 
                         key={idx}
-                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary-foreground border border-primary/20 hover:bg-primary/20 transition-colors duration-200"
+                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-foreground border border-primary/20 hover:bg-primary/20 transition-colors duration-200"
                       >
                         {course}
                       </span>

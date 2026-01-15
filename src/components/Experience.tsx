@@ -44,7 +44,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 px-6 bg-muted/20">
+    <section id="experience" className="py-24 px-6 bg-background dark:bg-muted/20">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent">
@@ -73,7 +73,7 @@ const Experience = () => {
                       <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                         {exp.role}
                       </h3>
-                      <div className="flex items-center gap-2 text-secondary mb-2">
+                      <div className="flex items-center gap-2 text-foreground/70 mb-2">
                         <Briefcase className="h-4 w-4" />
                         <span className="font-semibold">{exp.company}</span>
                         <span className="text-muted-foreground">• {exp.location}</span>

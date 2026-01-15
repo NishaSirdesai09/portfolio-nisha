@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-24 px-6 bg-[hsl(var(--sky-blue))] dark:bg-transparent">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
@@ -38,16 +38,17 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div className="space-y-6 animate-slide-in-left">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a <span className="text-primary font-semibold">Master's student in Information Systems</span> at 
-              Northeastern University with a strong foundation in full-stack development and cloud technologies.
+              I'm a software engineer with a <span className="text-primary font-semibold">Master's in Information Systems from Northeastern University</span>, focused on building user-facing products that are fast, reliable, and easy to use.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Recently completed a <span className="text-secondary font-semibold">Software Engineer Co-op at LendBuzz</span>, 
-              where I built scalable APIs, developed AI-powered solutions, and optimized system performance.
+              I recently completed a <span className="text-secondary font-semibold">Software Engineering Co-op at LendBuzz</span>, where I built customer and dealer-facing features in Next.js, integrated backend APIs, and worked on real production systems used for AI-driven auto financing.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               With over 2 years of professional experience, I've successfully delivered enterprise-level applications, 
               implemented CI/CD pipelines, and architected GPU-based infrastructure for AI applications.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I enjoy working at the intersection of frontend, product, and AI, where good design and strong engineering come together to create real impact.
             </p>
             <div className="flex gap-4 text-sm">
               <div>

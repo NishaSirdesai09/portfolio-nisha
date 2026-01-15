@@ -47,21 +47,23 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hover:opacity-80 transition-opacity"
-            >
-              NS
-            </a>
+          <div className="flex items-center relative">
+            {/* Logo - Extreme Left */}
+            <div className="flex-shrink-0">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hover:opacity-80 transition-opacity"
+              >
+                NS
+              </a>
+            </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -76,17 +78,20 @@ const Navbar = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
-              
+            </div>
+
+            {/* Right Side - Theme Toggle & Resume Button */}
+            <div className="hidden md:flex items-center gap-4 flex-shrink-0 ml-auto">
               {/* Theme Toggle */}
               {mounted && (
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="relative group"
+                  className="relative group border border-border/50 hover:border-primary/50 hover:bg-primary/10"
                 >
-                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-foreground" />
+                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-foreground" />
                   <span className="sr-only">Toggle theme</span>
                 </Button>
               )}
@@ -97,8 +102,8 @@ const Navbar = () => {
                 asChild
               >
                 <a
-                  href="/NishaSirdesai_Resume_FT_Oct_fsd.pdf"
-                  download="Nisha_Sirdesai_Resume.pdf"
+                  href="/Nisha_Software_Engineer_Jan2026.pdf"
+                  download="NishaSirdesai_Resume.pdf"
                   className="flex items-center gap-2"
                 >
                   <Download className="h-4 w-4" />
@@ -108,12 +113,26 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            <div className="md:hidden flex items-center gap-4 ml-auto">
+              {mounted && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="relative group border border-border/50 hover:border-primary/50 hover:bg-primary/10"
+                >
+                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-foreground" />
+                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-foreground" />
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              )}
+              <button
+                className="text-foreground"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>

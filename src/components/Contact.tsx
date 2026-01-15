@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative py-24 px-6 overflow-hidden">
+    <section id="contact" className="relative py-24 px-6 overflow-hidden bg-background dark:bg-transparent">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5" />
       <div className="absolute inset-0">
@@ -32,7 +32,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Left Side - CTA */}
           <div className="animate-slide-in-left space-y-8">
             <div className="space-y-4">
@@ -52,7 +52,7 @@ const Contact = () => {
               className="group bg-gradient-primary hover:opacity-90 text-primary-foreground border-0 shadow-glow"
               asChild
             >
-              <a href="mailto:nishasirdesai09@gmail.com" className="flex items-center gap-2">
+              <a href="mailto:nishasirdesai06@gmail.com" className="flex items-center gap-2">
                 <Send className="h-5 w-5" />
                 Send a Message
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -68,8 +68,8 @@ const Contact = () => {
               >
                 {/* Place your resume file at `public/resume.pdf` so this link downloads it */}
                 <a
-                  href="/NishaSirdesai_Resume_FT_Oct_fsd.pdf"
-                  download="Nisha_Sirdesai_Resume.pdf"
+                  href="/Nisha_Software_Engineer_Jan2026.pdf"
+                  download="NishaSirdesai_Resume.pdf"
                   className="flex items-center gap-2"
                   aria-label="Download Resume"
                 >
@@ -84,7 +84,7 @@ const Contact = () => {
           <div className="animate-slide-in-right space-y-6">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-xl" />
-              <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-8 space-y-6 transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow">
+              <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-8 space-y-6 transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow dark:bg-card/60">
                 <div className="flex items-start gap-4 group/item">
                   <div className="p-3 rounded-lg bg-gradient-primary shrink-0 group-hover/item:scale-110 transition-transform">
                     <Mail className="h-5 w-5 text-primary-foreground" />
@@ -94,10 +94,10 @@ const Contact = () => {
                       Email
                     </p>
                     <a 
-                      href="mailto:nishasirdesai09@gmail.com"
+                      href="mailto:nishasirdesai06@gmail.com"
                       className="text-base font-medium hover:text-primary transition-colors"
                     >
-                      nishasirdesai09@gmail.com
+                      nishasirdesai06@gmail.com
                     </a>
                   </div>
                 </div>
