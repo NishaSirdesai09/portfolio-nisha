@@ -112,15 +112,6 @@ export default {
           "0%": { backgroundPosition: "-1000px 0" },
           "100%": { backgroundPosition: "1000px 0" },
         },
-        "wave": {
-          "0%, 100%": { transform: "rotate(0deg)" },
-          "25%": { transform: "rotate(-10deg)" },
-          "75%": { transform: "rotate(10deg)" },
-        },
-        "peek": {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -135,8 +126,6 @@ export default {
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "scale-in": "scale-in 0.5s ease-out forwards",
         "shimmer": "shimmer 2s linear infinite",
-        "wave": "wave 0.5s ease-in-out infinite",
-        "peek": "peek 0.5s ease-out forwards",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
