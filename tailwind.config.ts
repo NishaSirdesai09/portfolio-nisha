@@ -112,6 +112,19 @@ export default {
           "0%": { backgroundPosition: "-1000px 0" },
           "100%": { backgroundPosition: "1000px 0" },
         },
+        "wave": {
+          "0%, 100%": { transform: "rotate(0deg) translateX(0)" },
+          "10%": { transform: "rotate(14deg) translateX(-5px)" },
+          "20%": { transform: "rotate(-8deg) translateX(5px)" },
+          "30%": { transform: "rotate(14deg) translateX(-5px)" },
+          "40%": { transform: "rotate(-4deg) translateX(5px)" },
+          "50%": { transform: "rotate(10deg) translateX(0)" },
+          "60%": { transform: "rotate(0deg) translateX(0)" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -126,6 +139,8 @@ export default {
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "scale-in": "scale-in 0.5s ease-out forwards",
         "shimmer": "shimmer 2s linear infinite",
+        "wave": "wave 2s ease-in-out",
+        "spin-slow": "spin-slow 20s linear infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
