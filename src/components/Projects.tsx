@@ -93,15 +93,15 @@ const Projects = () => {
                 <div className="relative z-10 p-8">
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors text-white dark:text-foreground">
-                      {project.title}
-                    </h3>
+                    {project.title}
+                  </h3>
                   <p className="text-white/80 dark:text-foreground/70 text-sm font-semibold mb-4">
                     {project.subtitle}
                   </p>
                     <p className="text-white/80 dark:text-muted-foreground mb-6 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
+                    {project.description}
+                  </p>
+                </div>
 
                   <div className="mb-6">
                   <p className="text-sm font-semibold mb-3 text-accent">Key Highlights:</p>
@@ -116,15 +116,15 @@ const Projects = () => {
                 </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, idx) => (
-                      <Badge 
-                        key={idx}
-                        variant="outline"
+                  {project.technologies.map((tech, idx) => (
+                    <Badge 
+                      key={idx}
+                      variant="outline"
                         className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all text-white/90 dark:text-foreground"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
                   </div>
                 </div>
               </Card>

@@ -171,11 +171,11 @@ const Skills = () => {
                   <div className="inline-flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-gradient-primary">
                       <category.icon className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                      {category.title}
-                    </h3>
                   </div>
+                    <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                    {category.title}
+                  </h3>
+                </div>
                 </div>
 
                 {/* Scrolling Skills Icons - Centered and Synchronous */}
@@ -196,7 +196,7 @@ const Skills = () => {
                         const iconColor = brandColors[skill];
                         
                         return (
-                          <div
+                    <div
                             key={skill}
                             className="flex-shrink-0 group flex flex-col items-center gap-2"
                             title={skill}
@@ -216,17 +216,17 @@ const Skills = () => {
                             ) : (
                               <div className="px-6 py-3 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:scale-110 hover:shadow-glow">
                                 <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors whitespace-nowrap">
-                                  {skill}
-                                </span>
-                              </div>
+                        {skill}
+                      </span>
+                    </div>
                             )}
                           </div>
                         );
                       })}
                     </div>
-                  </div>
                 </div>
               </div>
+            </div>
             );
           })}
         </div>

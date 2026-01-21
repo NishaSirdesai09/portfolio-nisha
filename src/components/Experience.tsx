@@ -9,11 +9,10 @@ const Experience = () => {
       location: "Boston, MA",
       period: "Jan 2025 — Aug 2025",
       highlights: [
-        "Built responsive GPS access module from Figma designs using Angular 17, TypeScript, and Angular Material through rapid prototyping, improving usability for 100+ users",
-        "Integrated Google Maps API with draggable UI components for real-time geolocation, increasing user engagement by 30%",
-        "Optimized frontend performance using Chrome DevTools and Lighthouse, reducing page load times by 40%",
-        "Implemented NgRx state management for loan eligibility workflows, reducing manual underwriting time by 30%",
-        "Collaborated in Agile sprints to ship features weekly with changing requirements and tight deadlines"
+        "Built responsive GPS access module with Angular 17, TypeScript, and Angular Material",
+        "Integrated Google Maps API for real-time geolocation with draggable UI components",
+        "Implemented NgRx state management for loan eligibility workflows",
+        "Optimized frontend performance using Chrome DevTools and Lighthouse"
       ]
     },
     {
