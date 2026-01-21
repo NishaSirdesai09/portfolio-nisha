@@ -5,16 +5,15 @@ const Experience = () => {
   const experiences = [
     {
       company: "LendBuzz",
-      role: "Software Engineer Co-op",
+      role: "Frontend Engineering Co-op",
       location: "Boston, MA",
       period: "Jan 2025 — Aug 2025",
       highlights: [
-        "Built scalable Spring Boot & Nest.js APIs for loan workflows",
-        "Developed token validation service with Python/Flask and AWS Lambda",
-        "Designed responsive GPS module using Next.js, improving usability for 100+ users",
-        "Engineered Graph RAG pipeline, improving pre-qualification conversion by 20%",
-        "Reduced deployment time by 60% through CI/CD optimization",
-        "Optimized frontend performance, reducing load times with Chrome DevTools"
+        "Built responsive GPS access module from Figma designs using Angular 17, TypeScript, and Angular Material through rapid prototyping, improving usability for 100+ users",
+        "Integrated Google Maps API with draggable UI components for real-time geolocation, increasing user engagement by 30%",
+        "Optimized frontend performance using Chrome DevTools and Lighthouse, reducing page load times by 40%",
+        "Implemented NgRx state management for loan eligibility workflows, reducing manual underwriting time by 30%",
+        "Collaborated in Agile sprints to ship features weekly with changing requirements and tight deadlines"
       ]
     },
     {
