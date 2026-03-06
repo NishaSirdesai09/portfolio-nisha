@@ -9,10 +9,12 @@ const Education = () => {
       period: "Sep 2023 — Dec 2025",
       gpa: "3.8/4.0",
       coursework: [
+        "Web Design & UX Engineering",
+        "UX Design & Testing",
+        "Data Science & Engineering Methods",
+        "Program Structure & Algorithms",
         "Application Engineering & Development",
-        "Data Science Engineering",
-        "Web Design & User Experience",
-        "Data Structures & Algorithms"
+        "Object-Oriented Design",
       ]
     },
     {

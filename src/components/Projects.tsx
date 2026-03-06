@@ -87,6 +87,7 @@ function ProjectCardContent({
               {project.process}
             </p>
           </div>
+          {/* Collaboration commented out – personal projects, not company/team work
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-foreground font-semibold">
               <Users className="h-5 w-5 text-primary" />
@@ -96,6 +97,7 @@ function ProjectCardContent({
               {project.collaboration}
             </p>
           </div>
+          */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-foreground font-semibold">
               <Lightbulb className="h-5 w-5 text-primary" />
@@ -206,7 +208,7 @@ const Projects = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A journey through my recent work, showcasing process, collaboration, and design thinking
+            A journey through my recent work, showcasing process and design thinking
           </p>
         </div>
 

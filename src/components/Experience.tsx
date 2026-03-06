@@ -4,39 +4,39 @@ import { Card } from "@/components/ui/card";
 const Experience = () => {
   const experiences = [
     {
-      company: "LendBuzz",
+      company: "LendBuzz Inc.",
       role: "Frontend Engineering Co-op",
       location: "Boston, MA",
       period: "Jan 2025 — Aug 2025",
       highlights: [
-        "Built responsive GPS access module with Angular 17, TypeScript, and Angular Material",
-        "Integrated Google Maps API for real-time geolocation with draggable UI components",
-        "Implemented NgRx state management for loan eligibility workflows",
-        "Optimized frontend performance using Chrome DevTools and Lighthouse"
+        "Built GPS Access page from Figma using Next.js, TypeScript, React Hooks, and TailwindCSS for 100+ users",
+        "Integrated Google Maps and backend loan APIs with draggable UI, improving dealer workflows by 30%",
+        "Managed client state with Redux-style patterns for end-to-end loan eligibility flows",
+        "Improved performance and reliability using Chrome DevTools, Lighthouse, Web Vitals, and Sentry"
       ]
     },
     {
-      company: "Northeastern University",
+      company: "Northeastern University – DMSB AI Strategic Hub",
       role: "Software Development Research Assistant",
       location: "Boston, MA",
-      period: "Oct 2024 — Feb 2025",
+      period: "Sep 2024 — Dec 2024; Sep 2025 — Dec 2025",
       highlights: [
-        "Architected GPU-based infrastructure for LLM-powered apps",
-        "Built scalable AI-powered grading apps, increasing efficiency by 60%",
-        "Led development of Voice Coach AI with React.js/Node.js + Whisper ASR",
-        "Automated deployment pipelines with CI/CD + Docker"
+        "Built Voice Coach AI (React + Node.js + Whisper ASR) for real-time speech feedback, increasing engagement by 45%",
+        "Developed AI AgentWorld (React + Node.js) with RAG using Qdrant vector DB and multiple LLMs for faster support",
+        "Implemented essay grading UI on AWS GPU (Gemma, Mistral, vLLM, RabbitMQ) with rubric-based feedback, improving efficiency by 60%",
+        "Optimized GPU inference pipelines and monitoring, improving throughput by 40% and latency by 30%"
       ]
     },
     {
-      company: "NTT Data Services",
+      company: "NTT DATA",
       role: "Information Technology Senior Associate",
       location: "Bangalore, IN",
       period: "Jul 2021 — Aug 2023",
       highlights: [
-        "Led frontend development of React/Next.js interfaces for internal ERP tools",
-        "Engineered Spring Boot REST APIs for invoice automation",
-        "Reduced manual processes by 40% through automation",
-        "Lowered defect recurrence by 30% through code refactoring"
+        "Led React/Next.js frontends integrated with Spring Boot REST APIs, boosting task completion rates by 45%",
+        "Built and maintained component libraries and design system elements for consistent UI across modules",
+        "Optimized APIs and UIs using logs, analytics, and refactoring, cutting render time by 35% and deployment time by 30%",
+        "Automated invoice and reporting flows, reducing manual operations by 40%"
       ]
     }
   ];

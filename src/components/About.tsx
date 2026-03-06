@@ -41,7 +41,7 @@ const About = () => {
               I'm a software engineer with a <span className="text-primary font-semibold">Master's in Information Systems from Northeastern University</span>, focused on building user-facing products that are fast, reliable, and easy to use.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I recently completed a <span className="text-secondary font-semibold">Frontend Engineering Co-op at LendBuzz</span>, where I built a responsive GPS access module in Angular 17 (TypeScript/Angular Material), integrated Google Maps API for real-time geolocation, and improved performance using Lighthouse and Chrome DevTools.
+              I recently completed a <span className="text-secondary font-semibold">Frontend Engineering Co-op at LendBuzz</span>, where I built a responsive GPS access module in Next.js and TypeScript, integrated Google Maps API for real-time geolocation, and improved performance using Sentry and Chrome DevTools.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               With over 2 years of professional experience, I've successfully delivered enterprise-level applications, 

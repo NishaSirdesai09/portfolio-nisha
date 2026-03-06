@@ -92,7 +92,7 @@ const Navbar = () => {
                 </button>
               )}
               <a
-                href="/Nisha_Software_Engineer_Jan2026.pdf"
+                href="/NishaSirdesai_Resume_Frontend_2026.pdf"
                 download="NishaSirdesai_Resume.pdf"
                 className="inline-flex items-center gap-2 h-9 px-4 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >

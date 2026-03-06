@@ -8,6 +8,7 @@ const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const fixedText = "Engineer";
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   
   const animatedWords = [
     { text: "Ideas", icon: Lightbulb },
@@ -252,15 +253,46 @@ const Hero = () => {
               variant="outline"
               size="lg"
               className="group border-accent/50 hover:border-accent hover:bg-accent/10"
-              asChild
+              onClick={() => setIsEmailModalOpen(true)}
             >
-              <a href="mailto:nishasirdesai06@gmail.com">
-                <Mail className="mr-2 h-5 w-5 group-hover:text-accent transition-colors" />
-                Contact
-              </a>
+              <Mail className="mr-2 h-5 w-5 group-hover:text-accent transition-colors" />
+              Contact
             </Button>
           </div>
         </div>
+
+        {/* Email pop-up from Hero contact button */}
+        {isEmailModalOpen && (
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+            <div className="bg-background dark:bg-card rounded-2xl shadow-glow border border-border/60 px-6 py-5 max-w-sm w-[90%] text-left">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 rounded-lg bg-accent/15">
+                  <Mail className="h-5 w-5 text-accent" />
+                </div>
+                <h3 className="text-lg font-semibold">Contact Email</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                You can reach me at:
+              </p>
+              <a
+                href="mailto:nishasirdesai06@gmail.com"
+                className="block text-sm font-medium text-accent break-all mb-5"
+              >
+                nishasirdesai06@gmail.com
+              </a>
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-border/60"
+                  onClick={() => setIsEmailModalOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Scroll Indicator */}
         <button

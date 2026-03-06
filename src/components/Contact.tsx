@@ -89,7 +89,7 @@ const Contact = () => {
               >
                 {/* Place your resume file at `public/resume.pdf` so this link downloads it */}
                 <a
-                  href="/Nisha_Software_Engineer_Jan2026.pdf"
+                  href="/NishaSirdesai_Resume_Frontend_2026.pdf"
                   download="NishaSirdesai_Resume.pdf"
                   className="flex items-center gap-2"
                   aria-label="Download Resume"
