@@ -1,7 +1,28 @@
-import { Mail, MapPin, Phone, Send, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Mail, Send, ArrowRight, Copy, Check, Linkedin, Github, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+/*
+  Suggestions for what to add instead of Location / Phone:
+  - Copy-email button with success feedback (implemented)
+  - "Available for work" status pill with pulse (implemented)
+  - LinkedIn + GitHub links (implemented)
+  - Optional later: Calendly link, "I typically respond within 24h", timezone (e.g. EST)
+*/
+
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "nishasirdesai06@gmail.com";
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  };
   return (
     <section id="contact" className="relative py-24 px-6 overflow-hidden bg-background dark:bg-transparent">
       {/* Animated Background */}
@@ -80,58 +101,104 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right Side - Contact Info */}
+          {/* Right Side - Contact Info (Location & Phone commented out) */}
           <div className="animate-slide-in-right space-y-6">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-xl" />
-              <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-8 space-y-6 transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow dark:bg-card/60">
+              <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-8 space-y-6 transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-glow dark:bg-card/60 animate-border-glow">
+                {/* Status pill – top portfolios use this */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-foreground">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                    </span>
+                    Open to work · From Dec 2025
+                  </span>
+                  <Sparkles className="h-4 w-4 text-primary/70" aria-hidden />
+                </div>
+
                 <div className="flex items-start gap-4 group/item">
                   <div className="p-3 rounded-lg bg-gradient-primary shrink-0 group-hover/item:scale-110 transition-transform">
                     <Mail className="h-5 w-5 text-primary-foreground" />
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
                       Email
                     </p>
-                    <a 
-                      href="mailto:nishasirdesai06@gmail.com"
-                      className="text-base font-medium hover:text-primary transition-colors"
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a
+                        href={`mailto:${email}`}
+                        className="text-base font-medium hover:text-primary transition-colors"
+                      >
+                        {email}
+                      </a>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 shrink-0 text-muted-foreground hover:text-primary transition-colors"
+                        onClick={copyEmail}
+                        aria-label="Copy email"
+                      >
+                        {copied ? (
+                          <Check className="h-4 w-4 text-green-500" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* LinkedIn & GitHub – standard for top candidates */}
+                <div className="pt-2 border-t border-border/50">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Connect
+                  </p>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/nisha-sirdesai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-muted/50 hover:bg-primary/10 border border-border/50 hover:border-primary/30 transition-all duration-300 group/link"
+                      aria-label="LinkedIn"
                     >
-                      nishasirdesai06@gmail.com
+                      <Linkedin className="h-5 w-5 text-[#0A66C2] group-hover/link:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">LinkedIn</span>
+                    </a>
+                    <a
+                      href="https://github.com/NishaSirdesai09"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-muted/50 hover:bg-primary/10 border border-border/50 hover:border-primary/30 transition-all duration-300 group/link"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-5 w-5 text-foreground group-hover/link:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">GitHub</span>
                     </a>
                   </div>
                 </div>
 
+                {/* Commented out: Location & Phone
                 <div className="flex items-start gap-4 group/item">
-                  <div className="p-3 rounded-lg bg-gradient-primary shrink-0 group-hover/item:scale-110 transition-transform">
+                  <div className="p-3 rounded-lg bg-gradient-primary shrink-0">
                     <Phone className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      Phone
-                    </p>
-                    <a 
-                      href="tel:+18573904697"
-                      className="text-base font-medium hover:text-primary transition-colors"
-                    >
-                      (857) 390-4697
-                    </a>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
+                    <a href="tel:+18573904697" className="text-base font-medium hover:text-primary">(857) 390-4697</a>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4 group/item">
-                  <div className="p-3 rounded-lg bg-gradient-primary shrink-0 group-hover/item:scale-110 transition-transform">
+                  <div className="p-3 rounded-lg bg-gradient-primary shrink-0">
                     <MapPin className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      Location
-                    </p>
-                    <p className="text-base font-medium">
-                      Boston, MA, USA
-                    </p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Location</p>
+                    <p className="text-base font-medium">Boston, MA, USA</p>
                   </div>
                 </div>
+                */}
               </div>
             </div>
           </div>

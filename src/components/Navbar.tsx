@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Download, Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -37,33 +36,34 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  /* Show icon for the *other* theme: in dark mode show Sun (switch to light), in light show Moon (switch to dark) */
+  const themeIcon = theme === "dark" ? <Sun className="h-[1.15rem] w-[1.15rem] text-foreground" /> : <Moon className="h-[1.15rem] w-[1.15rem] text-foreground" />;
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-glow"
+            ? "bg-background/90 backdrop-blur-md border-b border-border/40 shadow-sm"
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center relative">
-            {/* Logo - Extreme Left */}
-            <div className="flex-shrink-0">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hover:opacity-80 transition-opacity"
-              >
-                NS
-              </a>
-            </div>
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+          <div className="flex items-center h-14 sm:h-16 relative">
+            {/* Logo */}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="flex-shrink-0 text-lg font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+            >
+              NS
+            </a>
 
-            {/* Desktop Navigation - Centered */}
-            <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            {/* Desktop nav - centered */}
+            <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -72,65 +72,54 @@ const Navbar = () => {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
+                  className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/50"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
             </div>
 
-            {/* Right Side - Theme Toggle & Resume Button */}
-            <div className="hidden md:flex items-center gap-4 flex-shrink-0 ml-auto">
-              {/* Theme Toggle */}
+            {/* Right: theme icon + resume */}
+            <div className="hidden md:flex items-center gap-2 flex-shrink-0 ml-auto">
               {mounted && (
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <button
+                  type="button"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="relative group border border-border/50 hover:border-primary/50 hover:bg-primary/10"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                  aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
                 >
-                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-foreground" />
-                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-foreground" />
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
+                  {themeIcon}
+                </button>
               )}
-              
-              <Button
-                size="sm"
-                className="bg-gradient-primary hover:opacity-90 text-primary-foreground border-0"
-                asChild
+              <a
+                href="/Nisha_Software_Engineer_Jan2026.pdf"
+                download="NishaSirdesai_Resume.pdf"
+                className="inline-flex items-center gap-2 h-9 px-4 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
-                <a
-                  href="/Nisha_Software_Engineer_Jan2026.pdf"
-                  download="NishaSirdesai_Resume.pdf"
-                  className="flex items-center gap-2"
-                >
-                  <Download className="h-4 w-4" />
-                  Resume
-                </a>
-              </Button>
+                <Download className="h-4 w-4" />
+                Resume
+              </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center gap-4 ml-auto">
+            {/* Mobile: theme icon + hamburger */}
+            <div className="md:hidden flex items-center gap-1 ml-auto">
               {mounted && (
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <button
+                  type="button"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="relative group border border-border/50 hover:border-primary/50 hover:bg-primary/10"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                  aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
                 >
-                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-foreground" />
-                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-foreground" />
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
+                  {themeIcon}
+                </button>
               )}
               <button
-                className="text-foreground"
+                type="button"
+                className="flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:bg-muted/60 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
           </div>
@@ -161,36 +150,27 @@ const Navbar = () => {
             </a>
           ))}
           
-          {/* Mobile Theme Toggle */}
-          {mounted && (
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="border-primary/50 hover:border-primary hover:bg-primary/10 animate-fade-in"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="ml-2">{theme === "dark" ? "Light" : "Dark"} Mode</span>
-            </Button>
-          )}
-          
-          <Button
-            size="lg"
-            className="bg-gradient-primary hover:opacity-90 text-primary-foreground border-0 animate-fade-in"
-            style={{ animationDelay: "0.7s" }}
-            asChild
-          >
+          {/* Mobile: theme icon + resume */}
+          <div className="flex items-center gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            {mounted && (
+              <button
+                type="button"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center w-12 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+              >
+                {theme === "dark" ? <Sun className="h-6 w-6 text-foreground" /> : <Moon className="h-6 w-6 text-foreground" />}
+              </button>
+            )}
             <a
-              href="/NishaSirdesai_Resume_FT_Oct_fsd.pdf"
-              download="Nisha_Sirdesai_Resume.pdf"
-              className="flex items-center gap-2"
+              href="/Nisha_Software_Engineer_Jan2026.pdf"
+              download="NishaSirdesai_Resume.pdf"
+              className="inline-flex items-center gap-2 h-12 px-5 rounded-xl text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               <Download className="h-5 w-5" />
               Download Resume
             </a>
-          </Button>
+          </div>
         </div>
       </div>
     </>
